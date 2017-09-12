@@ -1,4 +1,4 @@
-package TriangleExercises;
+package IntroductoryProgrammingAssignments.TriangleExercises;
 
 import java.util.Scanner;
 

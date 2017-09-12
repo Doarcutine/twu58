@@ -1,4 +1,4 @@
-package TriangleExercises;
+package IntroductoryProgrammingAssignments.TriangleExercises;
 
 /**
  * Created by Doarcutine on 2017/9/8.

@@ -1,4 +1,4 @@
-package PrimeFactorsExercise;
+package IntroductoryProgrammingAssignments.PrimeFactorsExercise;
 
 import java.util.ArrayList;
 import java.util.List;

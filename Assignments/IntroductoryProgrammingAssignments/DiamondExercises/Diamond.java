@@ -1,18 +1,19 @@
-package DiamondExercises;
+package IntroductoryProgrammingAssignments.DiamondExercises;
 
 import java.util.Scanner;
 
 /**
  * Created by Doarcutine on 2017/9/8.
  */
-public class Isosceles {
+public class Diamond {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
 
-        for(int line = 1;line<=n;line++) {
-            int space = n - line;
-            int count = line * 2 - 1;
+        int totalCharacterCount = n * 2 - 1;
+        for(int line = 1;line<=totalCharacterCount;line++) {
+            int space = Math.abs(n - line);
+            int count = totalCharacterCount - (space * 2);
             PrintSpace(space);
             PrintAsterisk(count);
             PrintSpace(space);

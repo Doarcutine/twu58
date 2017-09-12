@@ -1,26 +1,21 @@
-package DiamondExercises;
+package IntroductoryProgrammingAssignments.DiamondExercises;
 
 import java.util.Scanner;
 
 /**
  * Created by Doarcutine on 2017/9/8.
  */
-public class DiamondWithName {
+public class Isosceles {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
 
-        int totalCharacterCount = n * 2 - 1;
-        for(int line = 1;line<=totalCharacterCount;line++) {
-            int space = Math.abs(n - line);
-            int count = totalCharacterCount - (space * 2);
-            if (line == n) {
-                System.out.print("Zhang Diyuan");
-            } else {
-                PrintSpace(space);
-                PrintAsterisk(count);
-                PrintSpace(space);
-            }
+        for(int line = 1;line<=n;line++) {
+            int space = n - line;
+            int count = line * 2 - 1;
+            PrintSpace(space);
+            PrintAsterisk(count);
+            PrintSpace(space);
             System.out.println();
         }
     }

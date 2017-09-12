@@ -1,4 +1,4 @@
-package FizzBuzzExercise;
+package IntroductoryProgrammingAssignments.FizzBuzzExercise;
 
 /**
  * Created by Doarcutine on 2017/9/8.

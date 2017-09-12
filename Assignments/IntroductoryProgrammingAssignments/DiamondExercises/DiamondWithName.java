@@ -1,11 +1,11 @@
-package DiamondExercises;
+package IntroductoryProgrammingAssignments.DiamondExercises;
 
 import java.util.Scanner;
 
 /**
  * Created by Doarcutine on 2017/9/8.
  */
-public class Diamond {
+public class DiamondWithName {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
@@ -14,9 +14,13 @@ public class Diamond {
         for(int line = 1;line<=totalCharacterCount;line++) {
             int space = Math.abs(n - line);
             int count = totalCharacterCount - (space * 2);
-            PrintSpace(space);
-            PrintAsterisk(count);
-            PrintSpace(space);
+            if (line == n) {
+                System.out.print("Zhang Diyuan");
+            } else {
+                PrintSpace(space);
+                PrintAsterisk(count);
+                PrintSpace(space);
+            }
             System.out.println();
         }
     }
