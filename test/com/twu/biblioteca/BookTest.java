@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Doarcutine on 2017/9/15.

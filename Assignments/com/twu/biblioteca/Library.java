@@ -1,35 +1,34 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by Doarcutine on 2017/9/15.
  */
 public class Library {
-    private ArrayList<Book> bookList;
-    private ArrayList<String> menu;
+    private BookManager bookManager;
+    private MovieManager movieManager;
+    private UserManager userManager;
 
     public Library() {
-        bookList = new ArrayList<Book>();
-        bookList.add(new Book("book1", "author1", "publishTime1"));
-        bookList.add(new Book("book2", "author2", "publishTime2"));
-        bookList.add(new Book("book3", "author3", "publishTime3"));
-        bookList.add(new Book("book4", "author4", "publishTime4"));
+        bookManager = new BookManager();
+        movieManager = new MovieManager();
+        userManager = new UserManager();
 
-        menu = new ArrayList<String>();
-        menu.add("List All Avaliable Books");
-        menu.add("Checkout book");
-        menu.add("Return book");
-        menu.add("Quit");
     }
 
     public void printMenu() {
-        int index = 1;
-        for (String option : menu) {
-            System.out.println(index + "." + option);
-            index++;
+        System.out.println("1.List All Avaliable Books");
+        System.out.println("2.List All Avaliable Movies");
+        System.out.println("3.Login");
+        System.out.println("4.Quit");
+        if (Session.IsLogin()) {
+            System.out.println("5.Show User Information");
+            System.out.println("6.Checkout Movie");
+            System.out.println("7.Checkout Book");
+            System.out.println("8.Return Book");
         }
+
         System.out.print("please input your choice:");
     }
 
@@ -38,7 +37,7 @@ public class Library {
     }
 
     public boolean responseUserChoseMenuOption(int option) {
-        if (option < 1 || option > menu.size()) {
+        if (option < 1) {
             System.out.println("Select a valid option!");
             return false;
         }
@@ -49,55 +48,33 @@ public class Library {
     private void jumpToUserChoseMenuOption(int option) {
         Scanner scanner = new Scanner(System.in);
         String bookName;
+        String libraryNumber = "-1";
         switch (option) {
             case 1:
-                printAvaliableBookList();
+                bookManager.PrintAvaliableBookList();
                 break;
             case 2:
-                System.out.print("Please input the book's name which you want to checkout:");
-                bookName = scanner.next();
-                userCheckoutBook(bookName);
+                movieManager.PrintAvaliableMovieList();
                 break;
             case 3:
-                System.out.print("Please input the book's name which you want to return:");
-                bookName = scanner.next();
-                userReturnBook(bookName);
+                userManager.DoLogin();
+                break;
+            case 5:
+                if (Session.IsLogin()) {
+                    userManager.GetUser(Session.currentUserLibarayNumber).ShowInformation();
+                }
+                break;
+            case 6:
+                movieManager.DoCheckoutMovie();
+                break;
+            case 7:
+                bookManager.DoCheckoutBook();
+                break;
+            case 8:
+                bookManager.DoReturnBook();
                 break;
             default:
                 System.exit(0);
         }
     }
-
-    public void printAvaliableBookList() {
-        for (Book currentBook : bookList) {
-            if (currentBook.isAvaliable()) {
-                currentBook.printBookDetails();
-            }
-        }
-    }
-
-    public boolean userCheckoutBook(String name) {
-        for (Book currentBook : bookList) {
-            if (currentBook.getName().equals(name) && currentBook.isAvaliable()) {
-                currentBook.changeAvaliableStatus(false);
-                System.out.println("Thank you! Enjoy the book");
-                return true;
-            }
-        }
-        System.out.println("That book is not available.");
-        return false;
-    }
-
-    public boolean userReturnBook(String name) {
-        for (Book currentBook : bookList) {
-            if (currentBook.getName().equals(name) && !currentBook.isAvaliable()) {
-                currentBook.changeAvaliableStatus(true);
-                System.out.println("Thank you for returning the book.");
-                return true;
-            }
-        }
-        System.out.println("That is not a valid book to return.");
-        return false;
-    }
-
 }

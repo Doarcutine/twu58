@@ -1,9 +1,8 @@
 package com.twu.biblioteca;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Doarcutine on 2017/9/15.
@@ -32,25 +31,6 @@ public class LibraryTest {
     public void printMenuTest() {
         library.printMenu();
     }
-
-    @Test
-    public void userCheckoutBookTest() {
-        assertTrue(library.userCheckoutBook("book1"));
-    }
-
-    @Test
-    public void userReturnBookTest() {
-        library.userCheckoutBook("book1");
-        assertTrue(library.userReturnBook("book1"));
-    }
-
-    @Test
-    public void printAvaliableBookListTest() {
-        library.userCheckoutBook("book1");
-        library.printAvaliableBookList();
-    }
-
-
 
 }
 
