@@ -1,0 +1,19 @@
+1.
+select member.name from member,book,checkout_item where member.id=member_id and book.id=book_id and book.title='The Hobbit';
+
+2.
+select count(*) from member where member.id not in(select member_id from checkout_item);
+
+3.
+select movie.title from movie where movie.id not in (select movie_id from checkout_item where movie_id not null)
+union all
+select book.title from book where book.id not in (select book_id from checkout_item where book_id not null);
+
+4.
+insert into book(title) values('The Pragmatic Programmer');
+insert into member(name) values('zdy');
+insert into checkout_item(member_id,book_id) values((select member.id from member where name='zdy'),(select book.id from book where book.title='The Pragmatic Programmer'));
+select member.name from member,book,checkout_item where member.id=member_id and book.id=book_id and book.title='The Pragmatic Programmer';
+
+5.
+select name from member where member.id in(select member_id from checkout_item group by member_id having count(member_id)>1);
